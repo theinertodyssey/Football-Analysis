@@ -25,7 +25,7 @@ st.markdown("""
 
 st.title("⚽ Football League Analysis Dashboard")
 
-DEFAULT_DATA_PATH = "/home/theinertodyssey/Downloads/pl-tables-1993-2024.csv"
+DEFAULT_DATA_PATH = "pl-tables-1993-2024.csv"
 
 @st.cache_data
 def load_data(file_path):
