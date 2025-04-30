@@ -14,4 +14,6 @@ And boom!
 You're good to go...
 
 How I built it:- 
-Explored the internet ->   Got a rough idea ->   Looked for tutorials & documentations ->   Got multiple errors ->   Took help from Youtube & AI ->   & that's it!
+Explored the internet ->   Got a rough idea ->   Looked for tutorials & documentations ->   Got multiple errors ->   Took help from Youtube & AI ->   Deployed it with Streamlit ->   & that's it!
+
+Web Application Link: https://basic-football-analysis.streamlit.app/
