@@ -1,6 +1,8 @@
 # Football-Analysis
 I tried to build a very basic football analysis platform. 
 
+Web Application Link: https://basic-football-analysis.streamlit.app/
+
 Even you can also upload your data and get it analysed, though I've given a default data for the analysis. 
 (English Premier League -> 1993-2024)
 
