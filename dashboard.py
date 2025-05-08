@@ -27,17 +27,30 @@ st.title("⚽ Football League Analysis Dashboard")
 DEFAULT_DATA_PATH = "pl-tables-1993-2024.csv"
 
 @st.cache_data
-def load_data(file_path):
+def load_data(file):
     try:
-        if file_path.endswith('.csv'):
-            df = pd.read_csv(file_path)
-        elif file_path.endswith(('.xlsx', '.xls')):
-            df = pd.read_excel(file_path)
-        elif file_path.endswith('.txt'):
-            df = pd.read_csv(file_path, delimiter='\t')
-        else:
-            st.error("Unsupported file format. Please upload a CSV, Excel, or TXT file.")
-            return None
+        if isinstance(file, str):  # File path
+            if file.endswith('.csv'):
+                df = pd.read_csv(file)
+            elif file.endswith(('.xlsx', '.xls')):
+                df = pd.read_excel(file)
+            elif file.endswith('.txt'):
+                df = pd.read_csv(file, delimiter='\t')
+            else:
+                st.error("Unsupported file format. Please upload a CSV, Excel, or TXT file.")
+                return None
+        else:  # Uploaded file object
+            name = file.name.lower()
+            if name.endswith('.csv'):
+                df = pd.read_csv(file)
+            elif name.endswith(('.xlsx', '.xls')):
+                df = pd.read_excel(file)
+            elif name.endswith('.txt'):
+                df = pd.read_csv(file, delimiter='\t')
+            else:
+                st.error("Unsupported file format. Please upload a CSV, Excel, or TXT file.")
+                return None
+
         df.columns = df.columns.str.strip().str.lower()
         if 'season_end_year' in df.columns:
             df['season_end_year'] = df['season_end_year'].astype(int)
@@ -45,6 +58,8 @@ def load_data(file_path):
     except Exception as e:
         st.error(f"Error loading file: {e}")
         return None
+
+
 
 uploaded_file = st.file_uploader("📁 Upload your Football League data file", type=['csv', 'xlsx', 'xls', 'txt'])
 
